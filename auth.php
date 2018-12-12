@@ -197,7 +197,7 @@ class auth_plugin_clcdb extends auth_plugin_base {
         if (!count($userlist)) {
             // Exit right here, nothing else to do.
             $trace->finished();
-            return 0;
+            return true;
         }
         // Narrow down what fields we need to update.
         $allkeys = array_keys(get_object_vars($this->config));
@@ -242,7 +242,7 @@ class auth_plugin_clcdb extends auth_plugin_base {
         }
 
         $trace->finished();
-        return 0;
+        return true;
     }
 
     public function user_exists($username) {
