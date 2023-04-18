@@ -259,7 +259,7 @@ class auth_plugin_clcdb extends auth_plugin_base {
                                  WHERE {$this->config->fielduser} = '".$this->ext_addslashes($extusername)."' ");
 
         if (!$rs) {
-            print_error('auth_clcdbcantconnect', 'auth_clcdb');
+            throw new \moodle_exception('auth_clcdbcantconnect', 'auth_clcdb');
         } else if (!$rs->EOF) {
             // User exists externally.
             $result = true;
@@ -282,7 +282,7 @@ class auth_plugin_clcdb extends auth_plugin_base {
                                   FROM {$this->config->table} ");
 
         if (!$rs) {
-            print_error('auth_clcdbcantconnect', 'auth_clcdb');
+            throw new \moodle_exception('auth_clcdbcantconnect', 'auth_clcdb');
         } else if (!$rs->EOF) {
             while ($rec = $rs->FetchRow()) {
                 $rec = array_change_key_case((array)$rec, CASE_LOWER);
